@@ -25,7 +25,7 @@
 				type="text"
 				name="name"
 				id="name"
-				value={form?.data?.name ?? ''}
+				value={form?.data?.name?.toString() ?? ''}
 				class="mt-1 block w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2 px-3 border"
 			/>
 			{#if form?.errors?.name}
@@ -40,7 +40,7 @@
 				type="email"
 				name="email"
 				id="email"
-				value={form?.data?.email ?? ''}
+				value={form?.data?.email?.toString() ?? ''}
 				class="mt-1 block w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2 px-3 border"
 			/>
 			{#if form?.errors?.email}
@@ -55,7 +55,7 @@
 				type="text"
 				name="subject"
 				id="subject"
-				value={form?.data?.subject ?? ''}
+				value={form?.data?.subject?.toString() ?? ''}
 				class="mt-1 block w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2 px-3 border"
 			/>
 			{#if form?.errors?.subject}
@@ -70,7 +70,7 @@
 				name="message"
 				id="message"
 				rows="4"
-				value={form?.data?.message ?? ''}
+				value={form?.data?.message?.toString() ?? ''}
 				class="mt-1 block w-full rounded-md border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm py-2 px-3 border"
 			></textarea>
 			{#if form?.errors?.message}

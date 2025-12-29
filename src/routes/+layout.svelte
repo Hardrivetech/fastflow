@@ -2,10 +2,13 @@
   import "../app.css";
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
+  import { PUBLIC_GA_ID } from '$env/static/public';
 
   let isMobileMenuOpen = false;
   let isDark = false;
   let showBackToTop = false;
+  let showConsentBanner = false;
+  let consentGiven = false;
 
   $: $page.url.pathname, isMobileMenuOpen = false;
 
@@ -16,6 +19,13 @@
     } else {
       isDark = false;
       document.documentElement.classList.remove('dark');
+    }
+
+    const consent = localStorage.getItem('cookie_consent');
+    if (consent === 'granted') {
+      consentGiven = true;
+    } else if (consent === null) {
+      showConsentBanner = true;
     }
   });
 
@@ -37,7 +47,40 @@
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  function acceptCookies() {
+    consentGiven = true;
+    showConsentBanner = false;
+    localStorage.setItem('cookie_consent', 'granted');
+  }
+
+  function declineCookies() {
+    consentGiven = false;
+    showConsentBanner = false;
+    localStorage.setItem('cookie_consent', 'denied');
+  }
+
+  function resetCookies() {
+    localStorage.removeItem('cookie_consent');
+    consentGiven = false;
+    showConsentBanner = true;
+  }
 </script>
+
+<svelte:head>
+  {#if consentGiven}
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={PUBLIC_GA_ID}"></script>
+    {@html `
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '${PUBLIC_GA_ID}');
+      </script>
+    `}
+  {/if}
+</svelte:head>
 
 <svelte:window onscroll={handleScroll} />
 
@@ -122,6 +165,7 @@
             <a href="/privacy" class="hover:text-blue-600">Privacy</a>
             <a href="/terms" class="hover:text-blue-600">Terms</a>
             <a href="/contact" class="hover:text-blue-600">Contact</a>
+            <button onclick={resetCookies} class="hover:text-blue-600 cursor-pointer">Reset Cookies</button>
         </div>
         <div class="text-slate-400 text-sm">
             © {new Date().getFullYear()} FastFlow.
@@ -139,4 +183,23 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
     </svg>
   </button>
+
+  <!-- Cookie Consent Banner -->
+  {#if showConsentBanner}
+    <div class="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-sm text-slate-600 dark:text-slate-300 text-center sm:text-left">
+          We use cookies to analyze site traffic and improve your experience. By accepting, you agree to our use of cookies.
+        </p>
+        <div class="flex gap-3">
+          <button onclick={declineCookies} class="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">
+            Decline
+          </button>
+          <button onclick={acceptCookies} class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors shadow-sm">
+            Accept
+          </button>
+        </div>
+      </div>
+    </div>
+  {/if}
 </div>
