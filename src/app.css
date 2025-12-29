@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+@import "prismjs/themes/prism-tomorrow.css";
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 

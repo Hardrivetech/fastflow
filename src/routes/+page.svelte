@@ -49,14 +49,14 @@
 <!-- Hero Section -->
 <section class="relative pt-20 pb-32 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-semibold tracking-wide">
+        <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 dark:bg-blue-900/30 dark:border-blue-800 dark:text-blue-300 text-sm font-semibold tracking-wide">
             v1.0 is now available
         </div>
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight">
             Accelerate Your <br class="hidden md:block" />
             <span class="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-cyan-500">Development Flow</span>
         </h1>
-        <p class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p class="mt-4 text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
             FastFlow is the curated web stack built on SvelteKit, Tailwind, and Prisma. 
             Stop configuring and start shipping performant applications.
         </p>
@@ -64,7 +64,7 @@
             <button class="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-500 transition shadow-xl shadow-blue-500/30 ring-offset-2 focus:ring-2 ring-blue-600">
                 Start Building
             </button>
-            <button class="bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 transition hover:border-slate-300">
+            <button class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition hover:border-slate-300 dark:hover:border-slate-600">
                 Read the Docs
             </button>
         </div>
@@ -79,26 +79,26 @@
 </section>
 
 <!-- The Stack Grid -->
-<section id="stack" class="py-24 bg-white relative">
+<section id="stack" class="py-24 bg-white dark:bg-slate-950 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-20">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">The Best Web Stack</h2>
-            <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">The Best Web Stack</h2>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
                 We've selected the most robust technologies to ensure your application is scalable, type-safe, and easy to maintain.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {#each stackItems as item}
-                <div class="group p-8 rounded-3xl border border-slate-100 bg-slate-50 hover:bg-white hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-300 hover:-translate-y-1">
+                <div class="group p-8 rounded-3xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 hover:bg-white dark:hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-slate-900/50 transition-all duration-300 hover:-translate-y-1">
                     <div class="flex items-center justify-between mb-6">
                         <div class="text-4xl">{item.icon}</div>
-                        <div class={`text-xs font-bold uppercase tracking-wider ${item.color} bg-white px-3 py-1 rounded-full border border-slate-100 shadow-sm`}>
+                        <div class={`text-xs font-bold uppercase tracking-wider ${item.color} bg-white dark:bg-slate-800 px-3 py-1 rounded-full border border-slate-100 dark:border-slate-700 shadow-sm`}>
                             {item.category}
                         </div>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">{item.title}</h3>
-                    <p class="text-slate-600 leading-relaxed">{item.desc}</p>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
                 </div>
             {/each}
         </div>

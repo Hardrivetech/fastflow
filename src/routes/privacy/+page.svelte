@@ -2,10 +2,10 @@
 	<title>Privacy Policy - FastFlow</title>
 </svelte:head>
 
-<div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
-	<h1 class="text-3xl font-bold text-slate-900 mb-8">Privacy Policy</h1>
+<div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 dark:text-slate-200">
+	<h1 class="text-3xl font-bold text-slate-900 dark:text-white mb-8">Privacy Policy</h1>
 	
-	<div class="prose prose-slate max-w-none">
+	<div class="prose prose-slate dark:prose-invert max-w-none">
 		<p class="lead">Last updated: {new Date().toLocaleDateString()}</p>
 		
 		<p>
