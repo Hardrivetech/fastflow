@@ -3,6 +3,8 @@
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
   import { PUBLIC_GA_ID } from '$env/static/public';
+  import { slide } from 'svelte/transition';
+  import MetaTags from '$lib/MetaTags.svelte';
 
   let isMobileMenuOpen = false;
   let isDark = false;
@@ -82,7 +84,11 @@
   {/if}
 </svelte:head>
 
+<MetaTags />
+
 <svelte:window onscroll={handleScroll} />
+
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] bg-blue-600 text-white px-4 py-2 rounded-md font-medium shadow-lg">Skip to content</a>
 
 <div class="min-h-screen flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-50 font-sans selection:bg-blue-100 selection:text-blue-900 dark:selection:bg-blue-900 dark:selection:text-blue-100">
   <!-- Navigation -->
@@ -99,6 +105,7 @@
         <nav class="hidden md:flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
           <a href="/#stack" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">The Stack</a>
           <a href="/#architecture" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Architecture</a>
+          <a href="/blog" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Blog</a>
           <a href="/docs" class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Docs</a>
         </nav>
 
@@ -120,19 +127,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg>
                 {/if}
             </button>
-            <a href="https://github.com" target="_blank" class="hidden sm:block text-slate-500 hover:text-slate-900 transition-colors font-medium text-sm">GitHub</a>
-            <button class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-800 transition shadow-lg shadow-slate-900/20">
+            <a href="https://github.com/Hardrivetech/fastflow" target="_blank" class="hidden sm:block text-slate-500 hover:text-slate-900 transition-colors font-medium text-sm">GitHub</a>
+            <a href="/docs/getting-started" class="bg-slate-900 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-slate-800 transition shadow-lg shadow-slate-900/20">
                 Get Started
-            </button>
+            </a>
         </div>
       </div>
     </div>
 
     <!-- Mobile Menu -->
     {#if isMobileMenuOpen}
-        <div class="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-6 space-y-4 shadow-lg">
+        <div transition:slide={{ duration: 200 }} class="md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 px-4 py-6 space-y-4 shadow-lg">
             <a href="/#stack" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400" onclick={() => isMobileMenuOpen = false}>The Stack</a>
             <a href="/#architecture" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400" onclick={() => isMobileMenuOpen = false}>Architecture</a>
+            <a href="/blog" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400" onclick={() => isMobileMenuOpen = false}>Blog</a>
             <a href="/docs" class="block text-base font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400" onclick={() => isMobileMenuOpen = false}>Docs</a>
             <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex flex-col gap-3">
                  <button onclick={toggleTheme} class="flex items-center gap-2 text-slate-600 dark:text-slate-300 font-medium">
@@ -142,15 +150,15 @@
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" /></svg> Dark Mode
                     {/if}
                  </button>
-                 <a href="https://github.com" target="_blank" class="text-slate-600 dark:text-slate-300 font-medium">GitHub</a>
-                 <button class="bg-slate-900 text-white px-5 py-3 rounded-lg text-sm font-semibold w-full">Get Started</button>
+                 <a href="https://github.com/Hardrivetech/fastflow" target="_blank" class="text-slate-600 dark:text-slate-300 font-medium">GitHub</a>
+                 <a href="/docs/getting-started" class="block text-center bg-slate-900 text-white px-5 py-3 rounded-lg text-sm font-semibold w-full">Get Started</a>
             </div>
         </div>
     {/if}
   </header>
 
   <!-- Page Content -->
-  <main class="grow">
+  <main id="main-content" class="grow">
     <slot />
   </main>
 

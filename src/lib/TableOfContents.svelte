@@ -2,25 +2,28 @@
 	import { onMount } from 'svelte';
 	import { afterNavigate } from '$app/navigation';
 
+	/** @type {Array<{id: string, text: string}>} */
 	let headings = [];
 	let activeId = '';
-	let observer;
+	/** @type {IntersectionObserver | null} */
+	let observer = null;
 
 	function init() {
-		if (observer) observer.disconnect();
+		observer?.disconnect();
 
 		const elements = document.querySelectorAll('.prose h2');
 
 		headings = Array.from(elements).map((element) => {
+			const text = element.textContent || '';
 			if (!element.id) {
-				element.id = element.innerText
+				element.id = text
 					.toLowerCase()
 					.replace(/\s+/g, '-')
 					.replace(/[^\w-]/g, '');
 			}
 			return {
 				id: element.id,
-				text: element.innerText
+				text: text
 			};
 		});
 
@@ -35,6 +38,7 @@
 			{ rootMargin: '0px 0px -80% 0px' }
 		);
 
+		// @ts-ignore
 		elements.forEach((element) => observer.observe(element));
 	}
 

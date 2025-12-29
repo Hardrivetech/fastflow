@@ -61,12 +61,12 @@
             Stop configuring and start shipping performant applications.
         </p>
         <div class="flex flex-col sm:flex-row justify-center gap-4">
-            <button class="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-500 transition shadow-xl shadow-blue-500/30 ring-offset-2 focus:ring-2 ring-blue-600">
+            <a href="/docs/getting-started" class="bg-blue-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-blue-500 transition shadow-xl shadow-blue-500/30 ring-offset-2 focus:ring-2 ring-blue-600">
                 Start Building
-            </button>
-            <button class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition hover:border-slate-300 dark:hover:border-slate-600">
+            </a>
+            <a href="/docs" class="bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 dark:hover:bg-slate-700 transition hover:border-slate-300 dark:hover:border-slate-600">
                 Read the Docs
-            </button>
+            </a>
         </div>
     </div>
     
