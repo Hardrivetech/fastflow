@@ -1,34 +1,37 @@
-<script>
-  import CodeBlock from '$lib/CodeBlock.svelte';
-</script>
-
 <svelte:head>
-  <title>Getting Started - FastFlow</title>
+	<title>Getting Started - FastFlow Docs</title>
 </svelte:head>
 
 <div class="prose prose-slate dark:prose-invert max-w-none">
-  <h1>Getting Started</h1>
-  <p class="lead">Start building your next big idea in minutes.</p>
+	<h1>Getting Started with FastFlow</h1>
+	<p class="lead">
+		FastFlow is designed to get you up and running with a production-ready web stack in minutes.
+	</p>
 
-  <h2>Prerequisites</h2>
-  <ul>
-    <li>Node.js 18.17 or later</li>
-    <li>npm, pnpm, or yarn</li>
-  </ul>
+	<h2>Installation</h2>
+	<p>To create a new project, simply run the following command in your terminal:</p>
 
-  <h2>Installation</h2>
-  <p>To create a new FastFlow project, run the following command in your terminal:</p>
-  
-  <CodeBlock code="npx create-fastflow-app my-app" language="bash" />
+	<pre><code class="language-bash">npm create fastflow@latest</code></pre>
 
-  <p>Follow the interactive prompts to select your preferred options (TypeScript, ESLint, etc.).</p>
+	<p>
+		The CLI will guide you through the setup process, offering to automatically install dependencies and start the development server for you.
+	</p>
 
-  <h2>Running the Development Server</h2>
-  <p>Navigate to your project directory and start the server:</p>
+	<h3>Quick Start (Non-interactive)</h3>
+	<p>If you prefer to skip the prompts and use defaults, you can use the <code>-y</code> flag:</p>
 
-  <CodeBlock code={`cd my-app
-npm install
-npm run dev`} language="bash" />
+	<pre><code class="language-bash">npm create fastflow@latest my-app -y</code></pre>
 
-  <p>Open your browser and visit <code>http://localhost:5173</code> to see your app running.</p>
+	<h2>Project Structure</h2>
+	<p>Once installed, you will see the following structure:</p>
+	<ul>
+		<li><strong>src/routes</strong>: Your application routes and pages.</li>
+		<li><strong>src/lib</strong>: Reusable components and utilities.</li>
+		<li><strong>prisma</strong>: Database schema and migrations.</li>
+	</ul>
+
+	<h2>Next Steps</h2>
+	<p>
+		Check out the <a href="/docs/architecture">Architecture</a> guide to understand how the pieces fit together.
+	</p>
 </div>

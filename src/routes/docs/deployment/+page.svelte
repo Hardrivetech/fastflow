@@ -1,29 +1,30 @@
-<script>
-  import CodeBlock from '$lib/CodeBlock.svelte';
-</script>
-
 <svelte:head>
-  <title>Deployment - FastFlow</title>
+	<title>Deployment - FastFlow Docs</title>
 </svelte:head>
 
 <div class="prose prose-slate dark:prose-invert max-w-none">
-  <h1>Deployment</h1>
-  <p class="lead">Taking your FastFlow application to production.</p>
+	<h1>Deployment</h1>
+	<p class="lead">
+		Since FastFlow is built on SvelteKit, it can be deployed to a variety of platforms using adapters.
+	</p>
 
-  <h2>Vercel (Recommended)</h2>
-  <p>FastFlow is optimized for Vercel. Since SvelteKit was created by Vercel, the integration is seamless.</p>
-  <ol>
-    <li>Push your code to a Git repository (GitHub, GitLab, Bitbucket).</li>
-    <li>Import your project in the Vercel dashboard.</li>
-    <li>Vercel will automatically detect SvelteKit and configure the build settings.</li>
-  </ol>
+	<h2>Vercel (Recommended)</h2>
+	<p>
+		FastFlow comes pre-configured with <code>adapter-auto</code>, which works seamlessly with Vercel.
+	</p>
+	<ol>
+		<li>Push your code to a Git repository (GitHub, GitLab, etc.).</li>
+		<li>Import your project into Vercel.</li>
+		<li>Vercel will detect SvelteKit and configure the build settings automatically.</li>
+		<li>Click <strong>Deploy</strong>.</li>
+	</ol>
 
-  <h2>Docker</h2>
-  <p>You can also containerize your application using Docker. A <code>Dockerfile</code> is included in the starter template.</p>
-
-  <CodeBlock code={`docker build -t my-fastflow-app .
-docker run -p 3000:3000 my-fastflow-app`} language="bash" />
-
-  <h2>Environment Variables</h2>
-  <p>Ensure you set your production environment variables (like <code>DATABASE_URL</code>) in your deployment platform settings.</p>
+	<h2>Environment Variables</h2>
+	<p>
+		Don't forget to set your production environment variables in your hosting provider's dashboard:
+	</p>
+	<ul>
+		<li><code>DATABASE_URL</code>: Connection string for your production database.</li>
+		<li><code>PUBLIC_GA_ID</code>: Your Google Analytics ID (optional).</li>
+	</ul>
 </div>

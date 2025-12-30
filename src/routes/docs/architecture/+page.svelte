@@ -1,34 +1,31 @@
-<script>
-  import CodeBlock from '$lib/CodeBlock.svelte';
-</script>
-
 <svelte:head>
-  <title>Architecture - FastFlow</title>
+	<title>Architecture - FastFlow Docs</title>
 </svelte:head>
 
 <div class="prose prose-slate dark:prose-invert max-w-none">
-  <h1>Architecture</h1>
-  <p class="lead">Understanding how FastFlow is structured.</p>
+	<h1>Architecture</h1>
+	<p class="lead">
+		FastFlow is built on a modern, type-safe stack designed for performance and developer experience.
+	</p>
 
-  <h2>The Stack</h2>
-  <p>FastFlow is built on top of a modern, type-safe stack:</p>
-  <ul>
-    <li><strong>SvelteKit:</strong> The meta-framework for Svelte, handling routing, SSR, and API endpoints.</li>
-    <li><strong>Tailwind CSS:</strong> A utility-first CSS framework for rapid UI development.</li>
-    <li><strong>Prisma:</strong> A next-generation ORM for Node.js and TypeScript.</li>
-  </ul>
+	<h2>The Stack</h2>
+	<p>We have carefully selected the following technologies:</p>
+	<ul>
+		<li><strong>SvelteKit:</strong> The meta-framework for Svelte, handling routing, SSR, and API endpoints.</li>
+		<li><strong>Tailwind CSS:</strong> A utility-first CSS framework for rapid UI development.</li>
+		<li><strong>Prisma:</strong> A next-generation ORM for type-safe database access.</li>
+		<li><strong>TypeScript:</strong> Static typing to catch errors early and improve tooling.</li>
+	</ul>
 
-  <h2>Project Structure</h2>
-  <p>Here is a high-level overview of the folder structure:</p>
-  
-  <CodeBlock code={`/src
-  /lib          # Shared utilities and components
-  /routes       # File-based routing
-    +layout.svelte  # Root layout
-    +page.svelte    # Homepage
-  /app.css      # Global styles (Tailwind)
-/prisma         # Database schema`} language="bash" />
+	<h2>Data Flow</h2>
+	<p>
+		FastFlow uses SvelteKit's <code>load</code> functions to fetch data on the server. This data is then passed to the page components as props.
+		Mutations are handled via <strong>Form Actions</strong>, providing a robust way to handle data submissions even without JavaScript.
+	</p>
 
-  <h2>Data Flow</h2>
-  <p>Data is fetched in <code>+page.server.ts</code> files using SvelteKit's <code>load</code> functions, ensuring type safety from the database (via Prisma) to the client.</p>
+	<h2>Database</h2>
+	<p>
+		Prisma serves as the bridge to your database. By defining your schema in <code>schema.prisma</code>, 
+		FastFlow automatically generates a type-safe client that you can use in your server-side routes.
+	</p>
 </div>

@@ -1,5 +1,7 @@
 node_modules
 
+/cli
+
 # Output
 .output
 .vercel

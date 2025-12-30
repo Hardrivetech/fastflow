@@ -2,9 +2,16 @@
   import "../app.css";
   import { page } from '$app/stores';
   import { onMount } from 'svelte';
+  import { afterNavigate } from '$app/navigation';
   import { PUBLIC_GA_ID } from '$env/static/public';
   import { slide } from 'svelte/transition';
   import MetaTags from '$lib/MetaTags.svelte';
+  import Prism from 'prismjs';
+  import 'prismjs/themes/prism-tomorrow.css';
+  import 'prismjs/components/prism-bash';
+  import 'prismjs/components/prism-javascript';
+  import 'prismjs/components/prism-json';
+  import 'prismjs/components/prism-typescript';
 
   let isMobileMenuOpen = false;
   let isDark = false;
@@ -29,6 +36,11 @@
     } else if (consent === null) {
       showConsentBanner = true;
     }
+    Prism.highlightAll();
+  });
+
+  afterNavigate(() => {
+    Prism.highlightAll();
   });
 
   function toggleTheme() {
@@ -84,7 +96,7 @@
   {/if}
 </svelte:head>
 
-<MetaTags />
+<MetaTags url={$page.url.href} />
 
 <svelte:window onscroll={handleScroll} />
 
