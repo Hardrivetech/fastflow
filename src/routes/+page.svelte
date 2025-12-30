@@ -137,7 +137,7 @@
                 <div class="space-y-2">
                     <p class="text-slate-400"># Create a new FastFlow project</p>
                     <p class="text-white">
-                        <span class="text-purple-400">npx</span> create-fastflow-app <span class="text-blue-400">my-awesome-app</span>
+                        <span class="text-purple-400">npx</span> @hardrivetech/fastflow@latest <span class="text-blue-400">my-awesome-app</span>
                     </p>
                     <p class="text-slate-500 animate-pulse">_</p>
                 </div>

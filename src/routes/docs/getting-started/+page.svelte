@@ -11,7 +11,7 @@
 	<h2>Installation</h2>
 	<p>To create a new project, simply run the following command in your terminal:</p>
 
-	<pre><code class="language-bash">npm create fastflow@latest</code></pre>
+	<pre><code class="language-bash">npx @hardrivetech/fastflow@latest</code></pre>
 
 	<p>
 		The CLI will guide you through the setup process, offering to automatically install dependencies and start the development server for you.
@@ -20,7 +20,7 @@
 	<h3>Quick Start (Non-interactive)</h3>
 	<p>If you prefer to skip the prompts and use defaults, you can use the <code>-y</code> flag:</p>
 
-	<pre><code class="language-bash">npm create fastflow@latest my-app -y</code></pre>
+	<pre><code class="language-bash">npx @hardrivetech/fastflow@latest my-app -y</code></pre>
 
 	<h2>Project Structure</h2>
 	<p>Once installed, you will see the following structure:</p>
